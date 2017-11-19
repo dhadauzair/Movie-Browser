@@ -96,8 +96,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-i3-ppU">
+                                <rect key="frame" x="0.0" y="220" width="375" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="zfK-kv-AmX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NaR-lR-5ww">
-                                <rect key="frame" x="0.0" y="220" width="375" height="170"/>
+                                <rect key="frame" x="0.0" y="241" width="375" height="170"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="agJ-ad-r8s"/>
@@ -117,11 +126,14 @@
                             <constraint firstItem="UHT-H2-D7U" firstAttribute="centerY" secondItem="kJs-xa-ltd" secondAttribute="centerY" id="5sA-Zi-VQ4"/>
                             <constraint firstItem="GcC-WD-1BC" firstAttribute="leading" secondItem="ciY-9j-beY" secondAttribute="leading" id="8H9-hP-OFz"/>
                             <constraint firstItem="GcC-WD-1BC" firstAttribute="top" secondItem="sbL-X9-dIS" secondAttribute="bottom" id="G2t-gJ-Zfa"/>
+                            <constraint firstItem="jOu-i3-ppU" firstAttribute="width" secondItem="5Rm-af-Bef" secondAttribute="width" id="Ilf-ew-GCd"/>
                             <constraint firstItem="UHT-H2-D7U" firstAttribute="centerX" secondItem="kJs-xa-ltd" secondAttribute="centerX" id="Oy6-3j-0px"/>
                             <constraint firstItem="ciY-9j-beY" firstAttribute="trailing" secondItem="kJs-xa-ltd" secondAttribute="trailing" id="Qvv-jg-yZL"/>
                             <constraint firstItem="NaR-lR-5ww" firstAttribute="leading" secondItem="ciY-9j-beY" secondAttribute="leading" id="Sq3-BC-Pb2"/>
                             <constraint firstItem="ciY-9j-beY" firstAttribute="bottom" secondItem="kJs-xa-ltd" secondAttribute="bottom" constant="447" id="WpJ-gb-tmh"/>
-                            <constraint firstItem="NaR-lR-5ww" firstAttribute="top" secondItem="GcC-WD-1BC" secondAttribute="bottom" id="gK2-aR-jgX"/>
+                            <constraint firstItem="jOu-i3-ppU" firstAttribute="leading" secondItem="ciY-9j-beY" secondAttribute="leading" id="YQj-6F-KWY"/>
+                            <constraint firstItem="jOu-i3-ppU" firstAttribute="top" secondItem="GcC-WD-1BC" secondAttribute="bottom" id="az4-SU-15E"/>
+                            <constraint firstItem="NaR-lR-5ww" firstAttribute="top" secondItem="jOu-i3-ppU" secondAttribute="bottom" id="gK2-aR-jgX"/>
                             <constraint firstItem="kJs-xa-ltd" firstAttribute="leading" secondItem="ciY-9j-beY" secondAttribute="leading" id="gZz-3E-1Rk"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GcC-WD-1BC" secondAttribute="trailing" id="iOa-HZ-jx4"/>
                             <constraint firstItem="sbL-X9-dIS" firstAttribute="centerX" secondItem="ciY-9j-beY" secondAttribute="centerX" id="jJY-wh-F8k"/>
@@ -135,6 +147,7 @@
                         <outlet property="activityIndicator" destination="UHT-H2-D7U" id="zF9-mn-QVU"/>
                         <outlet property="movieCoverImageView" destination="kJs-xa-ltd" id="g0O-Qa-WA1"/>
                         <outlet property="movieDescriptionTextView" destination="NaR-lR-5ww" id="0xB-Cr-OYg"/>
+                        <outlet property="movieRating" destination="jOu-i3-ppU" id="vqL-8c-zDV"/>
                         <outlet property="movieReleaseDate" destination="GcC-WD-1BC" id="7od-Sr-9Jd"/>
                         <outlet property="movieTitleLabel" destination="sbL-X9-dIS" id="Tvo-01-aa6"/>
                     </connections>

@@ -33,7 +33,7 @@
                 [self.movieCoverImageView setImageWithURL:[NSURL URLWithString:[imageBackdrop stringByAppendingString:self.movieDict[@"poster_path"]]]];
             [self.movieTitleLabel setText:self.movieTitle];
             [self.movieReleaseDate setText:[NSString stringWithFormat:@"Release Date:%@",self.movieDict[@"release_date"]]];
-            
+            [self.movieRating setText:[NSString stringWithFormat:@"Rating:%@/10",self.movieDict[@"vote_average"]]];
             [self.activityIndicator stopAnimating];
 //            }
         }

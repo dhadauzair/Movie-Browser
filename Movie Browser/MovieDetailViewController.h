@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *movieReleaseDate;
+@property (weak, nonatomic) IBOutlet UILabel *movieRating;
 
 @end
