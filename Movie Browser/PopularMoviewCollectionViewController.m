@@ -21,6 +21,8 @@ static NSString * const reuseIdentifier = @"cell";
     
 //    [self.gridViewMoviewCollection registerNib:[UINib nibWithNibName:@"CustomCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
+    self.title = @"Popular Movies";
+    
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
         if (!error)
             self.imagesBaseUrlString = [response[@"images"][@"base_url"] stringByAppendingString:@"w92"];
@@ -86,6 +88,16 @@ static NSString * const reuseIdentifier = @"cell";
     // Configure the cell
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    MovieDetailViewController *movieDetailViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MovieDetailViewController"];
+    movieDetailViewController.movieId = self.moviesArray[indexPath.row][@"id"];
+    movieDetailViewController.movieTitle = self.moviesArray[indexPath.row][@"original_title"];
+    movieDetailViewController.imagesBaseUrlString = self.imagesBaseUrlString;
+    [self.navigationController pushViewController:movieDetailViewController animated:YES];
 }
 
 #pragma mark <UICollectionViewDelegate>

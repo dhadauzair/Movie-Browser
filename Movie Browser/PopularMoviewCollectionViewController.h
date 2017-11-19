@@ -10,6 +10,7 @@
 #import <JLTMDbClient.h>
 #import "CustomCell.h"
 #import <UIImageView+AFNetworking.h>
+#import "MovieDetailViewController.h"
 
 @interface PopularMoviewCollectionViewController : UICollectionViewController<UICollectionViewDataSource>
 

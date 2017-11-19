@@ -18,6 +18,7 @@
 		E682CFAB1FBF9089001CC5D4 /* Movie_BrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E682CFAA1FBF9089001CC5D4 /* Movie_BrowserTests.m */; };
 		E682CFB61FBF9089001CC5D4 /* Movie_BrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E682CFB51FBF9089001CC5D4 /* Movie_BrowserUITests.m */; };
 		E6BB8C8A1FC180C500F061C4 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BB8C891FC180C500F061C4 /* CustomCell.m */; };
+		E6BB8C8D1FC191F800F061C4 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BB8C8C1FC191F700F061C4 /* MovieDetailViewController.m */; };
 		FA7D8ED13C4B27C5F5A395D3 /* libPods-Movie Browser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA68FB3A7336258C90F9275 /* libPods-Movie Browser.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,8 @@
 		E682CFB71FBF9089001CC5D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6BB8C881FC180C500F061C4 /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		E6BB8C891FC180C500F061C4 /* CustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		E6BB8C8B1FC191F700F061C4 /* MovieDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
+		E6BB8C8C1FC191F700F061C4 /* MovieDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				E66F368A1FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.m */,
 				E6BB8C881FC180C500F061C4 /* CustomCell.h */,
 				E6BB8C891FC180C500F061C4 /* CustomCell.m */,
+				E6BB8C8B1FC191F700F061C4 /* MovieDetailViewController.h */,
+				E6BB8C8C1FC191F700F061C4 /* MovieDetailViewController.m */,
 			);
 			path = "Movie Browser";
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 			files = (
 				E682CFA11FBF9089001CC5D4 /* main.m in Sources */,
 				E682CF931FBF9089001CC5D4 /* AppDelegate.m in Sources */,
+				E6BB8C8D1FC191F800F061C4 /* MovieDetailViewController.m in Sources */,
 				E6BB8C8A1FC180C500F061C4 /* CustomCell.m in Sources */,
 				E66F368B1FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.m in Sources */,
 			);
