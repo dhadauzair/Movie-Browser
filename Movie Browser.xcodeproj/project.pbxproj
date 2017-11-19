@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		215E0643FF061D4283CFA787 /* libPods-Movie BrowserTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D75A77AD126CBF623D26CA /* libPods-Movie BrowserTests.a */; };
 		6C33B1972F377F825EBDE993 /* libPods-Movie BrowserUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46259E1DA6733578E84CE1BD /* libPods-Movie BrowserUITests.a */; };
+		E66F368B1FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E66F368A1FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.m */; };
 		E682CF931FBF9089001CC5D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E682CF921FBF9089001CC5D4 /* AppDelegate.m */; };
-		E682CF961FBF9089001CC5D4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E682CF951FBF9089001CC5D4 /* ViewController.m */; };
 		E682CF991FBF9089001CC5D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E682CF971FBF9089001CC5D4 /* Main.storyboard */; };
 		E682CF9B1FBF9089001CC5D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E682CF9A1FBF9089001CC5D4 /* Assets.xcassets */; };
 		E682CF9E1FBF9089001CC5D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E682CF9C1FBF9089001CC5D4 /* LaunchScreen.storyboard */; };
 		E682CFA11FBF9089001CC5D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E682CFA01FBF9089001CC5D4 /* main.m */; };
 		E682CFAB1FBF9089001CC5D4 /* Movie_BrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E682CFAA1FBF9089001CC5D4 /* Movie_BrowserTests.m */; };
 		E682CFB61FBF9089001CC5D4 /* Movie_BrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E682CFB51FBF9089001CC5D4 /* Movie_BrowserUITests.m */; };
+		E6BB8C8A1FC180C500F061C4 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6BB8C891FC180C500F061C4 /* CustomCell.m */; };
 		FA7D8ED13C4B27C5F5A395D3 /* libPods-Movie Browser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA68FB3A7336258C90F9275 /* libPods-Movie Browser.a */; };
 /* End PBXBuildFile section */
 
@@ -47,11 +48,11 @@
 		80402061203468B407B30F62 /* Pods-Movie BrowserUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie BrowserUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie BrowserUITests/Pods-Movie BrowserUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		96B0B5D915E4813B33FD4B09 /* Pods-Movie Browser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie Browser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movie Browser/Pods-Movie Browser.debug.xcconfig"; sourceTree = "<group>"; };
 		A639A962FF85F58BCBCD04D1 /* Pods-Movie BrowserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie BrowserUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movie BrowserUITests/Pods-Movie BrowserUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E66F36891FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopularMoviewCollectionViewController.h; sourceTree = "<group>"; };
+		E66F368A1FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopularMoviewCollectionViewController.m; sourceTree = "<group>"; };
 		E682CF8E1FBF9089001CC5D4 /* Movie Browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E682CF911FBF9089001CC5D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E682CF921FBF9089001CC5D4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E682CF941FBF9089001CC5D4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E682CF951FBF9089001CC5D4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E682CF981FBF9089001CC5D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E682CF9A1FBF9089001CC5D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E682CF9D1FBF9089001CC5D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,6 +64,8 @@
 		E682CFB11FBF9089001CC5D4 /* Movie BrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movie BrowserUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E682CFB51FBF9089001CC5D4 /* Movie_BrowserUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie_BrowserUITests.m; sourceTree = "<group>"; };
 		E682CFB71FBF9089001CC5D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6BB8C881FC180C500F061C4 /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		E6BB8C891FC180C500F061C4 /* CustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,13 +146,15 @@
 			children = (
 				E682CF911FBF9089001CC5D4 /* AppDelegate.h */,
 				E682CF921FBF9089001CC5D4 /* AppDelegate.m */,
-				E682CF941FBF9089001CC5D4 /* ViewController.h */,
-				E682CF951FBF9089001CC5D4 /* ViewController.m */,
 				E682CF971FBF9089001CC5D4 /* Main.storyboard */,
 				E682CF9A1FBF9089001CC5D4 /* Assets.xcassets */,
 				E682CF9C1FBF9089001CC5D4 /* LaunchScreen.storyboard */,
 				E682CF9F1FBF9089001CC5D4 /* Info.plist */,
 				E682CFA01FBF9089001CC5D4 /* main.m */,
+				E66F36891FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.h */,
+				E66F368A1FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.m */,
+				E6BB8C881FC180C500F061C4 /* CustomCell.h */,
+				E6BB8C891FC180C500F061C4 /* CustomCell.m */,
 			);
 			path = "Movie Browser";
 			sourceTree = "<group>";
@@ -461,9 +466,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E682CF961FBF9089001CC5D4 /* ViewController.m in Sources */,
 				E682CFA11FBF9089001CC5D4 /* main.m in Sources */,
 				E682CF931FBF9089001CC5D4 /* AppDelegate.m in Sources */,
+				E6BB8C8A1FC180C500F061C4 /* CustomCell.m in Sources */,
+				E66F368B1FC0CA0B0077BF96 /* PopularMoviewCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +635,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Movie Browser/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uzair.Movie-Browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -643,6 +650,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Movie Browser/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uzair.Movie-Browser";
 				PRODUCT_NAME = "$(TARGET_NAME)";

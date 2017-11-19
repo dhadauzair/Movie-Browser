@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JLTMDbClient.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
