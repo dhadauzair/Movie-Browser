@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[JLTMDbClient sharedAPIInstance] setAPIKey:@"b2686cb7a11e380a90946b5ea5c9a172"];
+    [[JLTMDbClient sharedAPIInstance] setAPIKey:API_KEY];
     
     return YES;
 }
