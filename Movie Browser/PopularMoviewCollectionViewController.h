@@ -16,11 +16,9 @@
 @interface PopularMoviewCollectionViewController : UICollectionViewController<UICollectionViewDataSource,UISearchBarDelegate>
 
 @property (copy, nonatomic) NSString *imagesBaseUrlString;
-@property (strong, nonatomic) NSArray *moviesArray;
+@property (strong, nonatomic) NSMutableArray *moviesArray;
 @property (strong, nonatomic) IBOutlet UICollectionView *gridViewMoviewCollection;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property(nonatomic,assign)NSInteger pageSize;
-@property(nonatomic,assign)NSInteger preloadMargin;
 @property(nonatomic,assign)NSInteger lastLoadedPage;
 
 @end

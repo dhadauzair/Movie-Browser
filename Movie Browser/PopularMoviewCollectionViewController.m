@@ -20,9 +20,8 @@ static NSString * const reuseIdentifier = @"cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.pageSize = 20; // that's up to you, really
-    self.preloadMargin = 5; // or whatever number that makes sense with your page size
-    self.lastLoadedPage = 0;
+    self.moviesArray = [[NSMutableArray alloc] init];
+    self.lastLoadedPage = 1;
     
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbConfiguration withParameters:nil andResponseBlock:^(id response, NSError *error) {
         if (!error)
@@ -31,17 +30,20 @@ static NSString * const reuseIdentifier = @"cell";
             NSLog(@"Error");
     }];
 
-    [self getData:1];
-//    [self getMovieList];
+    [self getData:self.lastLoadedPage];
     
 }
 
 -(void)getData:(NSInteger)page  {
     self.lastLoadedPage = page;
-    // TODO: do the API call to get data
-    NSString *strPage = [NSString stringWithFormat: @"%ld", (long)page];
-    
-    [self getMovieList:strPage];
+    [self getMovieList];
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    float endScrolling = (scrollView.contentOffset.y + scrollView.frame.size.height);
+    if (endScrolling >= scrollView.contentSize.height)
+        [self getData:self.lastLoadedPage+1];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -52,14 +54,6 @@ static NSString * const reuseIdentifier = @"cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    NSInteger nextPage = (indexPath.item / self.pageSize) + 1;
-    NSInteger preloadIndex = nextPage * self.pageSize - self.preloadMargin;
-    
-    // trigger the preload when you reach a certain point AND prevent multiple loads and updates
-    if (indexPath.item >= preloadIndex && self.lastLoadedPage < nextPage) {
-        [self getData:nextPage];
-    }
     
     NSDictionary *movieDict = self.moviesArray[indexPath.row];
     cell.movieTitle.text = movieDict[ORIGINALTITLE];
@@ -98,14 +92,17 @@ static NSString * const reuseIdentifier = @"cell";
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     if ([searchBar.text length] > 0) {
-        [self searchMovie:searchBar.text];
-    } else
-        [self getMovieList:@"1"];
+        [self searchBarTextDidEndEditing:searchBar];
+    } else {
+        self.lastLoadedPage = 1;
+        [self getMovieList];
+    }
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([searchText length] == 0) {
-        [self getMovieList:@"1"];
+        self.lastLoadedPage = 1;
+        [self getMovieList];
     }
 }
 
@@ -113,8 +110,10 @@ static NSString * const reuseIdentifier = @"cell";
 {
     if ([searchBar.text length] > 0) {
         [self searchMovie:searchBar.text];
-    } else
-        [self getMovieList:@"1"];
+    } else {
+        self.lastLoadedPage = 1;
+        [self getMovieList];
+    }
 }
 
 - (IBAction)didSelectSettingsBtn:(id)sender {
@@ -122,14 +121,15 @@ static NSString * const reuseIdentifier = @"cell";
     
     UIAlertAction *firstButton = [UIAlertAction actionWithTitle:@"Most Popular" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [self setSortMovieByHighestRated:NO];
-//        [self getMovieList];
-        [self getMovieList:@"1"];
+        self.lastLoadedPage = 1;
+        [self getMovieList];
     }];
     
     
     UIAlertAction *secondButton = [UIAlertAction actionWithTitle:@"Highest Rated" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [self setSortMovieByHighestRated:YES];
-        [self getMovieList:@"1"];
+        self.lastLoadedPage = 1;
+        [self getMovieList];
     }];
     
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
@@ -164,22 +164,39 @@ static NSString * const reuseIdentifier = @"cell";
 
 #pragma mark - Internal Methods
 
-- (void) getMovieList:(NSString *)page
+- (void) getMovieList
 {
     [self animateActivityIndicator:YES];
     if ([self isSortMovieByHighestRated] == YES) {
-        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMovieTopRated withParameters:@{@"page":page} andResponseBlock:^(id response, NSError *error) {
+        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMovieTopRated withParameters:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.lastLoadedPage]} andResponseBlock:^(id response, NSError *error) {
             if(!error){
-                self.moviesArray = response[@"results"];
+                if (self.lastLoadedPage == 1 && [self.moviesArray count] > 0) {
+                    [self.moviesArray removeAllObjects];
+                    self.moviesArray = [[NSArray arrayWithArray:response[@"results"]] mutableCopy];
+                } else if ([self.moviesArray count] > 0) {
+                    for (NSDictionary *singleObject in response[@"results"]) {
+                        [self.moviesArray addObject:singleObject];
+                    }
+                }else
+                    self.moviesArray = [[NSArray arrayWithArray:response[@"results"]] mutableCopy];
                 [self.gridViewMoviewCollection reloadData];
                 self.title = @"Highest Rated Movies";
             }
             [self animateActivityIndicator:NO];
         }];
     } else {
-        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMoviePopular withParameters:@{@"page":page} andResponseBlock:^(id response, NSError *error) {
+        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMoviePopular withParameters:@{@"page":[NSString stringWithFormat:@"%ld",(long)self.lastLoadedPage]} andResponseBlock:^(id response, NSError *error) {
             if(!error){
-                self.moviesArray = response[@"results"];
+                if (self.lastLoadedPage == 1 && [self.moviesArray count] > 0) {
+                    [self.moviesArray removeAllObjects];
+                    self.moviesArray = [[NSArray arrayWithArray:response[@"results"]] mutableCopy];
+                } else if ([self.moviesArray count] > 0) {
+                    for (NSDictionary *singleObject in response[@"results"]) {
+                        [self.moviesArray addObject:singleObject];
+                    }
+                }else {
+                    self.moviesArray = [[NSArray arrayWithArray:response[@"results"]] mutableCopy];
+                }
                 [self.gridViewMoviewCollection reloadData];
                 self.title = @"Popular Movies";
             }
@@ -193,7 +210,7 @@ static NSString * const reuseIdentifier = @"cell";
     [self animateActivityIndicator:YES];
     [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbSearchMovie withParameters:@{@"query":searchText} andResponseBlock:^(id response, NSError *error) {
         if(!error){
-            self.moviesArray = response[@"results"];
+            self.moviesArray = [[NSArray arrayWithArray:response[@"results"]] mutableCopy];
             [self.gridViewMoviewCollection reloadData];
         }
         [self animateActivityIndicator:NO];
