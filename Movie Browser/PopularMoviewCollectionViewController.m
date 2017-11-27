@@ -31,7 +31,7 @@ static NSString * const reuseIdentifier = @"cell";
             NSLog(@"Error");
     }];
 
-    [self getData:0];
+    [self getData:1];
 //    [self getMovieList];
     
 }
@@ -100,12 +100,12 @@ static NSString * const reuseIdentifier = @"cell";
     if ([searchBar.text length] > 0) {
         [self searchMovie:searchBar.text];
     } else
-        [self getMovieList:@"0"];
+        [self getMovieList:@"1"];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([searchText length] == 0) {
-        [self getMovieList:@"0"];
+        [self getMovieList:@"1"];
     }
 }
 
@@ -114,7 +114,7 @@ static NSString * const reuseIdentifier = @"cell";
     if ([searchBar.text length] > 0) {
         [self searchMovie:searchBar.text];
     } else
-        [self getMovieList:@"0"];
+        [self getMovieList:@"1"];
 }
 
 - (IBAction)didSelectSettingsBtn:(id)sender {
@@ -123,13 +123,13 @@ static NSString * const reuseIdentifier = @"cell";
     UIAlertAction *firstButton = [UIAlertAction actionWithTitle:@"Most Popular" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [self setSortMovieByHighestRated:NO];
 //        [self getMovieList];
-        [self getMovieList:@"0"];
+        [self getMovieList:@"1"];
     }];
     
     
     UIAlertAction *secondButton = [UIAlertAction actionWithTitle:@"Highest Rated" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         [self setSortMovieByHighestRated:YES];
-        [self getMovieList:@"0"];
+        [self getMovieList:@"1"];
     }];
     
     UIAlertAction *cancelButton = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
@@ -168,7 +168,7 @@ static NSString * const reuseIdentifier = @"cell";
 {
     [self animateActivityIndicator:YES];
     if ([self isSortMovieByHighestRated] == YES) {
-        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMovieTopRated withParameters:@{@"query":page} andResponseBlock:^(id response, NSError *error) {
+        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMovieTopRated withParameters:@{@"page":page} andResponseBlock:^(id response, NSError *error) {
             if(!error){
                 self.moviesArray = response[@"results"];
                 [self.gridViewMoviewCollection reloadData];
@@ -177,7 +177,7 @@ static NSString * const reuseIdentifier = @"cell";
             [self animateActivityIndicator:NO];
         }];
     } else {
-        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMoviePopular withParameters:@{@"query":page} andResponseBlock:^(id response, NSError *error) {
+        [[JLTMDbClient sharedAPIInstance] GET:kJLTMDbMoviePopular withParameters:@{@"page":page} andResponseBlock:^(id response, NSError *error) {
             if(!error){
                 self.moviesArray = response[@"results"];
                 [self.gridViewMoviewCollection reloadData];
